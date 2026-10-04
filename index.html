@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pakistani Shopkeeper Simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <section id="startScreen" class="screen start-screen">
+      <div class="signboard">
+        <span class="sign-kicker" data-i18n="startKicker">Neighborhood Game</span>
+        <h1>Pakistani Shopkeeper Simulator</h1>
+        <p data-i18n="startIntro">Serve customers, calculate change, dodge credit drama, and keep the counter moving before closing time.</p>
+        <button id="startBtn" class="primary-btn" data-i18n="openShop">Open Shop</button>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="screen game-screen hidden">
+      <header class="topbar">
+        <div>
+          <span class="label" data-i18n="cash">Cash</span>
+          <strong id="cashValue">Rs. 2,000</strong>
+        </div>
+        <div>
+          <span class="label" data-i18n="reputation">Reputation</span>
+          <strong id="repValue">★★★★☆</strong>
+        </div>
+        <div>
+          <span class="label" data-i18n="time">Time</span>
+          <strong id="timeValue">Morning</strong>
+        </div>
+        <div>
+          <span class="label" data-i18n="customer">Customer</span>
+          <strong><span id="customerCount">1</span>/18</strong>
+        </div>
+        <div class="language-control">
+          <label for="languageSelect" class="label" data-i18n="language">Language</label>
+          <select id="languageSelect" aria-label="Language">
+            <option value="en">English</option>
+            <option value="ur">Roman Urdu</option>
+          </select>
+        </div>
+      </header>
+
+      <div class="ticker" id="eventTicker">Shutter up. First customer is walking in.</div>
+
+      <div class="counter-grid">
+        <section class="customer-panel panel">
+          <div class="customer-card">
+            <div class="customer-avatar" id="customerAvatar">🙂</div>
+            <div>
+              <span id="personalityTag" class="tag">Normal</span>
+              <h2 id="customerName">Customer</h2>
+            </div>
+          </div>
+          <p id="customerDialogue" class="dialogue">Boss, give me 1 biscuits.</p>
+          <div class="patience-wrap">
+            <div class="patience-row">
+              <span data-i18n="patience">Patience</span>
+              <strong id="patienceText">100%</strong>
+            </div>
+            <div class="patience-meter">
+              <div id="patienceBar"></div>
+            </div>
+          </div>
+          <div id="orderHint" class="order-hint"></div>
+        </section>
+
+        <section class="products-panel panel">
+          <div class="section-heading">
+            <h2 data-i18n="products">Products</h2>
+            <button id="clearBtn" class="quiet-btn" data-i18n="clearBasket">Clear Basket</button>
+          </div>
+          <div id="productsGrid" class="products-grid"></div>
+        </section>
+
+        <section class="bill-panel panel">
+          <div class="section-heading">
+            <h2 data-i18n="basket">Basket</h2>
+            <strong id="billValue">Rs. 0</strong>
+          </div>
+          <div id="basketList" class="basket-list empty">Select products for the customer.</div>
+
+          <div class="money-box">
+            <div>
+              <span class="label" data-i18n="customerPays">Customer pays</span>
+              <strong id="paidValue">Rs. 100</strong>
+            </div>
+            <div>
+              <label for="changeInput" class="label" data-i18n="changeToGive">Change to give</label>
+              <input id="changeInput" type="number" min="0" step="1" inputmode="numeric" placeholder="0">
+            </div>
+          </div>
+
+          <div id="udhaarChoice" class="udhaar-choice hidden">
+            <p data-i18n="creditPrompt">This customer wants credit. Accepting may help reputation, but cash comes later.</p>
+            <div class="choice-row">
+              <button id="acceptCreditBtn" class="small-btn" data-i18n="acceptCredit">Accept Credit</button>
+              <button id="rejectCreditBtn" class="small-btn alt" data-i18n="reject">Reject</button>
+            </div>
+          </div>
+
+          <button id="serveBtn" class="primary-btn serve-btn" data-i18n="serveCustomer">Serve Customer</button>
+          <div id="feedback" class="feedback"></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="resultsScreen" class="screen results-screen hidden">
+      <div class="results-card">
+        <span class="sign-kicker" data-i18n="closingTime">Closing Time</span>
+        <h1 id="ratingTitle">Great Shopkeeper</h1>
+        <div id="ratingStars" class="rating-stars">★★★★☆</div>
+        <div id="resultsGrid" class="results-grid"></div>
+        <button id="restartBtn" class="primary-btn" data-i18n="playAgain">Play Again</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
